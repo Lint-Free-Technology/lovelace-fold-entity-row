@@ -53,7 +53,7 @@ class FoldEntityRow extends LitElement {
 
     this._load_head();
     this.rows = [];
-    if (this._config.open) this._load_rows();
+    if (this.open) this._load_rows();
   }
 
   async _load_head() {
