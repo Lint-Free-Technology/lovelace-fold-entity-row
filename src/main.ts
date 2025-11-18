@@ -36,10 +36,10 @@ function ensureObject(config: any) {
 }
 
 class FoldEntityRow extends LitElement {
-  @property() open: boolean;
-  @property() head?: Promise<LovelaceElement>;
-  @property() rows?: LovelaceElement[];
-  @property() entitiesWarning = false;
+  @property({ type: Boolean }) open: boolean;
+  @property({ attribute: false }) head?: Promise<LovelaceElement>;
+  @property({ attribute: false }) rows?: LovelaceElement[];
+  @property({ type: Boolean }) entitiesWarning = false;
   @property() hass: any;
   @state() _showContent;
   @query(".container") _container: HTMLDivElement;
@@ -252,7 +252,7 @@ class FoldEntityRow extends LitElement {
       <div
         id="head"
         @ll-custom=${this._customEvent}
-        aria-expanded="${String(this.open)}"
+        aria-expanded=${this.open}
       >
         ${until(this.head, "")}
         <ha-icon
