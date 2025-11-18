@@ -54,7 +54,7 @@ entities:
 
 > NOTE: I'm sorry, dear reader, for insulting your intelligence and including the two lines:
 >
-> ```
+> ```yaml
 > type: entities
 > entities:
 > ```
@@ -80,7 +80,7 @@ entities:
       - light.kitchen_lights
 ```
 
-> NOTE: On a regretably similar note as above; if it's not entirely obvious to you why the configuration of `head:` looks this way, please do both of us a favor and go back to read the documentation of the [entities](https://www.home-assistant.io/lovelace/entities/) card again. \
+> NOTE: On a regrettably similar note as above; if it's not entirely obvious to you why the configuration of `head:` looks this way, please do both of us a favor and go back to read the documentation of the [entities](https://www.home-assistant.io/lovelace/entities/) card again. \
 > Then play around with **just** the entities card for a while, get to know it, try things out, experiment. Then come back to fold-entity-rows in a week or two.
 >
 > That also applies if you've never seen `type: section` before and think that's something I just made up. \
@@ -217,13 +217,27 @@ filter:
 
 ![image](https://user-images.githubusercontent.com/1299821/62471886-e4ed0d80-b79d-11e9-97b4-7edb721338cc.png)
 
+## Styling
+
+The following CSS vars are available for styling. In some cases these will override config settings.
+
+| CSS Variable | Application | Accepts | Overrides | Default |
+|---|---|---|---|---|
+| `--fold-entity-row-padding` | Padding of the fold | CSS size | `padding` | `24px` |
+| `--fold-entity-row-gap` | Row gap of rows within the fold | CSS size | None | `var(--entities-card-row-gap, var(--card-row-gap, 8px))` |
+| `--fold-entity-row-label-margin-left` | Left margin of label. Set to `0px` to have the fold heading label not have the default section head margin | CSS size | None | `inherit` |
+| `fold-entity-row-transition-duration` | Fold transition duration for animating open/close of the fold | CSS duration | None | `150ms` |
+| `fold-entity-row-toggle-icon-width` | Fold icon width | CSS size | None | `32px` |
+| `--fold-entity-row-toggle-icon-color` | Fold icon color | CSS color | None | `var(--primary-text-color)` |
+| `--fold-entity-row-toggle-icon-ripple-color` | Fold icon ripple color | None | `var(--hover-color, var(--divider-color))` |
+
 ## More examples
 
 All my test cases are available in the `test/views` directory.
 
 You can a demo in docker by going to the `test` directory and running:
 
-```
+```console
 docker-compose up
 ```
 
@@ -241,7 +255,7 @@ This is a limitation in Home Assistant. The header toggle will look at each entr
 
 Because that's how the [Home Assistant Section Entities Row](https://www.home-assistant.io/lovelace/entities/#section) looks.
 
-### Why all the passive aggressivenes?
+### Why all the passive aggressiveness?
 
 I'm just So Bloody Tired of this - that's why.
 
@@ -256,5 +270,3 @@ No
 Please leave
 
 ---
-
-<a href="https://www.buymeacoffee.com/uqD6KHCdJ" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
