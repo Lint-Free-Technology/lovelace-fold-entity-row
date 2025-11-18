@@ -155,12 +155,17 @@ class FoldEntityRow extends LitElement {
         this.classList.remove("section-head");
       }
     }
+    const cls = `type-fold-entity-row-${config?.type?.replace?.(":", "-")}`;
     await customElements.whenDefined("card-mod");
     (customElements.get("card-mod") as any).applyToElement(
       root,
       "row",
-      config.card_mod ? config.card_mod.style : config.style,
-      { config }
+      config.card_mod ? 
+        { style: config.card_mod.style, debug: config.card_mod?.debug ?? false } :
+        { style: "{}", debug: config.card_mod?.debug ?? false },
+      { config },
+      true,
+      cls
     );
   }
 
