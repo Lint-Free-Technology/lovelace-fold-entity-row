@@ -309,7 +309,7 @@ class FoldEntityRow extends LitElement {
       }
       #head :not(ha-icon-button, ha-icon):focus-visible {
         outline: none;
-        background: var(--fold-entity-row-toggle-icon-ripple-color, var(--hover-color, var(--divider-color)));
+        background: var(--divider-color);
         border-radius: 24px;
         background-size: cover;
       }

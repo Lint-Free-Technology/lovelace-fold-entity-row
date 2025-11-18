@@ -229,7 +229,6 @@ The following CSS vars are available for styling. In some cases these will overr
 | `fold-entity-row-transition-duration` | Fold transition duration for animating open/close of the fold | CSS duration | None | `150ms` |
 | `fold-entity-row-toggle-icon-width` | Fold icon width | CSS size | None | `32px` |
 | `--fold-entity-row-toggle-icon-color` | Fold icon color | CSS color | None | `var(--primary-text-color)` |
-| `--fold-entity-row-toggle-icon-ripple-color` | Fold icon ripple color | None | `var(--hover-color, var(--divider-color))` |
 
 ## More examples
 
