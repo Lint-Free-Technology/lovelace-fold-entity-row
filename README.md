@@ -1,12 +1,12 @@
 # fold-entity-row
 
+Forked from [thomasloven/lovelace-fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row) to continue development of this project.
+
 Fold away and hide rows in lovelace [entities](https://www.home-assistant.io/lovelace/entities/) cards.
 
 ## Installing
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
-
-Install using HACS or [see this guide](https://github.com/thomasloven/hass-config/wiki/Lovelace-Plugins).
+To install via HACS, add this repo [https://github.com/Lint-Free-Technology/lovelace-fold-entity-row](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row) as a [custom HACS repository](https://www.hacs.xyz/docs/faq/custom_repositories/). You are best to remove [thomasloven/lovelace-fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row) in your HACS to avoid confusion as to what repo you are using.
 
 ## Quick Start
 
@@ -222,7 +222,7 @@ filter:
 The following CSS vars are available for styling. In some cases these will override config settings.
 
 | CSS Variable | Application | Accepts | Overrides | Default |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `--fold-entity-row-padding` | Padding of the fold | CSS size | `padding` | `24px` |
 | `--fold-entity-row-gap` | Row gap of rows within the fold | CSS size | None | `var(--entities-card-row-gap, var(--card-row-gap, 8px))` |
 | `--fold-entity-row-label-margin-left` | Left margin of label. Set to `0px` to have the fold heading label not have the default section head margin | CSS size | None | `inherit` |
@@ -253,19 +253,5 @@ This is a limitation in Home Assistant. The header toggle will look at each entr
 ### Why is there a line above the section row?
 
 Because that's how the [Home Assistant Section Entities Row](https://www.home-assistant.io/lovelace/entities/#section) looks.
-
-### Why all the passive aggressiveness?
-
-I'm just So Bloody Tired of this - that's why.
-
-NOT EVERYTHING IN LOVELACE IS A CARD!
-
-### Does anyone ever actually ask the questions in your Frequently Asked Questions?
-
-No
-
-### Why doesn't this card have a background?
-
-Please leave
 
 ---
