@@ -368,9 +368,10 @@ class FoldEntityRow extends LitElement {
 
 if (!customElements.get("fold-entity-row")) {
   customElements.define("fold-entity-row", FoldEntityRow);
-  console.info(
-    `%cFOLD-ENTITY-ROW ${pjson.version} IS INSTALLED`,
-    "color: green; font-weight: bold",
-    ""
+  console.groupCollapsed(
+    `%c💡 FOLD-ENTITY-ROW ${pjson.version} IS INSTALLED 💡`,
+    'color: white; background-color: #CE3226; padding: 2px 5px; font-weight: bold; border-radius: 5px;',
   );
+  console.log('Readme:', 'https://github.com/Lint-Free-Technology/lovelace-fold-entity-row');
+  console.groupEnd();
 }
