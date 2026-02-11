@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { property, query, state } from "lit/decorators.js";
 import { until } from "lit/directives/until.js";
+import { ifDefined } from 'lit/directives/if-defined.js';
 import pjson from "../package.json";
 import { selectTree } from "./selecttree";
 import { findParentCard, actionHandlerBind, actionHandler } from "./helpers.js";
@@ -36,10 +37,10 @@ function ensureObject(config: any) {
 }
 
 class FoldEntityRow extends LitElement {
-  @property() open: boolean;
-  @property() head?: Promise<LovelaceElement>;
-  @property() rows?: LovelaceElement[];
-  @property() entitiesWarning = false;
+  @property({ type: Boolean }) open: boolean;
+  @property({ attribute: false }) head?: Promise<LovelaceElement>;
+  @property({ attribute: false }) rows?: LovelaceElement[];
+  @property({ type: Boolean }) entitiesWarning = false;
   @property() hass: any;
   @state() _showContent;
   @query(".container") _container: HTMLDivElement;
@@ -53,7 +54,7 @@ class FoldEntityRow extends LitElement {
 
     this._load_head();
     this.rows = [];
-    if (this._config.open) this._load_rows();
+    if (this.open) this._load_rows();
   }
 
   async _load_head() {
@@ -148,20 +149,35 @@ class FoldEntityRow extends LitElement {
       // Special styling to stretch
       if (root.localName === "hui-section-row") {
         this.classList.add("section-head");
-        root.style.minHeight = "53px";
-        const el = await selectTree(root, "$.divider");
-        if (el) el.style.marginRight = "-48px";
+        const dividerEl = await selectTree(root, "$.divider");
+        if (dividerEl) dividerEl.style.marginRight = "calc(calc(var(--fold-entity-row-toggle-icon-width, 32px) + 16px) * -1)";
+        // Next line only to fix a bug in HA core through 2025.12
+        if (dividerEl) dividerEl.style.marginTop = "0px";
+        const labelEl = await selectTree(root, "$.label");
+        if (labelEl) {
+          labelEl.style.marginLeft = "var(--fold-entity-row-label-margin-left, inherit)";
+        }
       } else {
         this.classList.remove("section-head");
       }
     }
+    const cls = `type-fold-entity-row-${config?.type?.replace?.(":", "-")}`;
     await customElements.whenDefined("card-mod");
     (customElements.get("card-mod") as any).applyToElement(
       root,
       "row",
-      config.card_mod ? config.card_mod.style : config.style,
-      { config }
+      config.card_mod ? 
+        { style: config.card_mod.style, debug: config.card_mod?.debug ?? false } :
+        { style: "{}", debug: config.card_mod?.debug ?? false },
+      { config },
+      true,
+      cls
     );
+  }
+
+  async toggleIcon(ev: CustomEvent) {
+    this.blur();
+    this.toggle(ev);
   }
 
   async toggle(ev: CustomEvent) {
@@ -252,14 +268,13 @@ class FoldEntityRow extends LitElement {
       <div
         id="head"
         @ll-custom=${this._customEvent}
-        aria-expanded="${String(this.open)}"
+        aria-expanded=${this.open}
       >
         ${until(this.head, "")}
-        <ha-icon
-          icon="mdi:chevron-down"
-          @action=${this.toggle}
+        <ha-icon-button
+          @action=${this.toggleIcon}
           .actionHandler=${actionHandler({})}
-          role="${this._config.clickable ? "" : "switch"}"
+          role="${ifDefined(this._config.clickable ? undefined : "switch")}"
           tabindex="${this._config.clickable ? "-1" : "0"}"
           aria-checked=${this.open ? "true" : "false"}
           aria-label="${this._config.clickable
@@ -268,13 +283,15 @@ class FoldEntityRow extends LitElement {
             ? "Toggle fold closed"
             : "Toggle fold open"}"
           class="${this.open ? "open" : ""}"
-        ></ha-icon>
+        >
+        <ha-icon icon="mdi:chevron-down"></ha-icon>
+      </ha-icon-button>
       </div>
 
       <div
         role="region"
         aria-hidden="${!this.open}"
-        style=${`padding-left: ${this._config.padding}px;`}
+        style=${`--row-padding: ${this._config.padding}px;`}
         class="container ${this.open ? "expanded" : ""}"
         tabindex="-1"
         @transitionend=${this._transitionEnd}
@@ -291,48 +308,59 @@ class FoldEntityRow extends LitElement {
         align-items: center;
         --toggle-icon-width: 32px;
       }
-      #head :not(ha-icon) {
+      #head :not(ha-icon-button, ha-icon) {
         flex-grow: 1;
-        max-width: calc(100% - var(--toggle-icon-width));
+        max-width: calc(100% - var(--fold-entity-row-toggle-icon-width, var(--toggle-icon-width)));
       }
-      #head :not(ha-icon):focus-visible {
+      #head :not(ha-icon-button, ha-icon):focus-visible {
         outline: none;
         background: var(--divider-color);
         border-radius: 24px;
         background-size: cover;
       }
-      #head :not(ha-icon):focus {
+      #head :not(ha-icon-button, ha-icon):focus {
         outline: none;
       }
 
-      ha-icon {
-        width: var(--toggle-icon-width);
+      ha-icon-button {
+        width: var(--fold-entity-row-toggle-icon-width, var(--toggle-icon-width));
         cursor: pointer;
         border-radius: 50%;
         background-size: cover;
-        --mdc-icon-size: var(--toggle-icon-width);
-        transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --mdc-icon-size: var(--fold-entity-row-toggle-icon-width, var(--toggle-icon-width));
+        --mdc-icon-button-size: var(--fold-entity-row-toggle-icon-width, var(--toggle-icon-width));
+        transition: transform var(--fold-entity-row-transition-duration, 150ms) cubic-bezier(0.4, 0, 0.2, 1);
+        color: var(--fold-entity-row-toggle-icon-color, var(--primary-text-color));
+        display: inline-flex;
       }
-      ha-icon:focus {
-        outline: none;
-        background: var(--divider-color);
-      }
-      ha-icon.open {
+
+      ha-icon-button.open {
         transform: rotate(180deg);
       }
 
-      :host(.section-head) ha-icon {
-        margin-top: 16px;
+      ha-icon {
+        display: flex;
+      }
+
+      :host(.section-head) ha-icon-button {
+        margin-top: 8px;
       }
 
       .container {
+        padding-left: var(--fold-entity-row-padding, var(--row-padding, 24px));
         overflow: hidden;
-        transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: calc(var(--fold-entity-row-transition-duration, 150ms) * 2) cubic-bezier(0.4, 0, 0.2, 1);
+        transition-property: height, margin-top;
+        margin-top: 0px;
         height: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--fold-entity-row-gap, var(--entities-card-row-gap, var(--card-row-gap, 8px)));
       }
 
       .container.expanded {
         height: auto;
+        margin-top: 8px;
       }
     `;
   }
