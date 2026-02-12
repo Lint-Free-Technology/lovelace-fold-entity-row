@@ -1,3 +1,9 @@
+## [2.0.0](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v1.0.0...v2.0.0) (2026-02-12)
+
+### ⭐ New Features
+
+* **major:** Major version bump ([b092be1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/b092be19dd3a1293bcef16dcf8327091fa3669f3))
+
 ## 1.0.0 (2026-02-12)
 
 ### ⭐ New Features
