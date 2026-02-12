@@ -1,22 +1,5 @@
 ## [3.0.0](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v2.0.0...v3.0.0) (2026-02-12)
 
-### ⭐ New Features
-
-* **major:** Major version bump ([d8ededc](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/d8ededc8d202e89348af06990b03997dc7a92680))
-
-## [2.0.0](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v1.0.0...v2.0.0) (2026-02-12)
-
-### ⭐ New Features
-
-* **major:** Major version bump ([b092be1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/b092be19dd3a1293bcef16dcf8327091fa3669f3))
-
-## 1.0.0 (2026-02-12)
-
-### ⭐ New Features
-
-* **major:** Maor version bump ([f1ac784](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/f1ac7847f6cff272d8e1a1d46031370dc9f86478))
-
-### ⚙️ Miscellaneous
-
-* Semantic-release ([ae9eec3](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/ae9eec3bae8071131eccad0c21e7d8d3d5815dd0))
-* Update console installed branding ([9fa9cbb](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/9fa9cbbec49206d0a119df296c16c7ea929f905a))
+* Update card-mod signature and apply class. by @dcapslock in https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/pull/2
+* 202511 button css vars by @dcapslock in https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/pull/3
+* Fix loading rows when open and config changes like when used with aut… by @dcapslock in https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/pull/4
