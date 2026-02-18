@@ -328,6 +328,8 @@ class FoldEntityRow extends LitElement {
         border-radius: 50%;
         background-size: cover;
         --mdc-icon-size: var(--fold-entity-row-toggle-icon-width, var(--toggle-icon-width));
+        --ha-icon-button-size: var(--fold-entity-row-toggle-icon-width, var(--toggle-icon-width));
+        /* --mdc-icon-button-size can be removed once Home Assistant 2026.3 released */
         --mdc-icon-button-size: var(--fold-entity-row-toggle-icon-width, var(--toggle-icon-width));
         transition: transform var(--fold-entity-row-transition-duration, 150ms) cubic-bezier(0.4, 0, 0.2, 1);
         color: var(--fold-entity-row-toggle-icon-color, var(--primary-text-color));
