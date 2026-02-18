@@ -228,8 +228,8 @@ The following CSS vars are available for styling. In some cases these will overr
 | `--fold-entity-row-padding` | Padding of the fold | CSS size | `padding` | `24px` |
 | `--fold-entity-row-gap` | Row gap of rows within the fold | CSS size | None | `var(--entities-card-row-gap, var(--card-row-gap, 8px))` |
 | `--fold-entity-row-label-margin-left` | Left margin of label. Set to `0px` to have the fold heading label not have the default section head margin | CSS size | None | `inherit` |
-| `fold-entity-row-transition-duration` | Fold transition duration for animating open/close of the fold | CSS duration | None | `150ms` |
-| `fold-entity-row-toggle-icon-width` | Fold icon width | CSS size | None | `32px` |
+| `--fold-entity-row-transition-duration` | Fold transition duration for animating open/close of the fold | CSS duration | None | `150ms` |
+| `--fold-entity-row-toggle-icon-width` | Fold icon width | CSS size | None | `32px` |
 | `--fold-entity-row-toggle-icon-color` | Fold icon color | CSS color | None | `var(--primary-text-color)` |
 
 ## More examples
