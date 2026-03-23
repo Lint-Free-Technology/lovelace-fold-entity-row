@@ -1,3 +1,9 @@
+## [3.0.2-beta.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.1...v3.0.2-beta.1) (2026-03-23)
+
+### 🐞 Bug Fixes
+
+* Support uix as well as card_mod for applying row styles ([614f207](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/614f20742d0bb8343a618d479fd2efc15eeab9be))
+
 ## [3.0.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.0...v3.0.1) (2026-02-18)
 
 ### 🐞 Bug Fixes
