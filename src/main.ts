@@ -162,17 +162,34 @@ class FoldEntityRow extends LitElement {
       }
     }
     const cls = `type-fold-entity-row-${config?.type?.replace?.(":", "-")}`;
-    await customElements.whenDefined("card-mod");
-    (customElements.get("card-mod") as any).applyToElement(
-      root,
-      "row",
-      config.card_mod ? 
-        { style: config.card_mod.style, debug: config.card_mod?.debug ?? false } :
-        { style: "{}", debug: config.card_mod?.debug ?? false },
-      { config },
-      true,
-      cls
-    );
+
+    customElements.whenDefined("card-mod").then(() => {
+      (customElements.get("card-mod") as any).applyToElement(
+        root,
+        "row",
+        config.card_mod ? 
+          { style: config.card_mod.style, debug: config.card_mod?.debug ?? false } :
+          { style: "{}", debug: config.card_mod?.debug ?? false },
+        { config },
+        true,
+        cls
+      );
+    });
+
+    customElements.whenDefined("uix-node").then(() => {
+      (customElements.get("uix-node") as any).applyToElement(
+        root,
+        "row",
+        config.uix ? 
+          { style: config.uix.style, debug: config.uix?.debug ?? false } :
+        config.card_mod ? 
+          { style: config.card_mod.style, debug: config.card_mod?.debug ?? false } :
+          { style: "{}", debug: false },
+        { config },
+        true,
+        cls
+      );
+    });
   }
 
   async toggleIcon(ev: CustomEvent) {
