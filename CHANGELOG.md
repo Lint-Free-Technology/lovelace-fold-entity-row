@@ -1,3 +1,9 @@
+## [3.0.3](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.2...v3.0.3) (2026-05-13)
+
+### ⚙️ Miscellaneous
+
+* Skip `group_config` merge for `custom:uix-forge` rows ([#15](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/issues/15)) ([b3db3ef](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/b3db3eff5e7e26d9622a31ab2a3a160f0cb6d1fe))
+
 ## [3.0.3-beta.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.2...v3.0.3-beta.1) (2026-05-13)
 
 ### ⚙️ Miscellaneous
