@@ -129,9 +129,11 @@ class FoldEntityRow extends LitElement {
       this._config.state_color ??
       parentCard?._config?.state_color ??
       parentCard?.config?.state_color;
+    const shouldApplyGroupConfig =
+      !head && config?.type !== "custom:uix-forge";
     config = {
       state_color,
-      ...(head ? {} : this._config.group_config),
+      ...(shouldApplyGroupConfig ? this._config.group_config : {}),
       ...config,
     };
 
