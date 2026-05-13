@@ -89,6 +89,7 @@ entities:
 > I will not answer any more questions about its use. It's a Home Assistant feature, not a fold-entity-row one.
 
 - Options specified in `group_config:` will be applied to all rows in the fold.
+  - Note: `group_config` is not passed through to rows with `type: custom:uix-forge`.
 
 ```yaml
 type: entities
