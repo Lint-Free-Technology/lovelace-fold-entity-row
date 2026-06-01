@@ -28,13 +28,13 @@ entities:
 
 This will show the row specified in `head:` with an arrow next to it. When clicked, the rows specified in `entities:` will be revealed.
 
-![fold-entity-row](https://user-images.githubusercontent.com/1299821/59793417-ceb2ed00-92d6-11e9-9a7a-ad0a1a85b5e6.png)
+![fold-entity-row basic](docs/source/assets/images/01_basic_usage.gif)
 
-> NOTE: You wouldn't _believe_ how many people miss the first line in this section.
+> NOTE: In case you missed this in the first line in this section.
 >
 > Add this **TO AN ENTITIES CARD**.
 >
-> This is NOT meant to be used except in an entities card. Any usage outside an entities card is entirely unsupported, and I won't help you fix it.
+> This is NOT meant to be used except in an entities card. Any usage outside an entities card is entirely unsupported, and no help will be given.
 
 ## Usage
 
@@ -54,17 +54,6 @@ entities:
       - light.kitchen_lights
 ```
 
-> NOTE: I'm sorry, dear reader, for insulting your intelligence and including the two lines:
->
-> ```yaml
-> type: entities
-> entities:
-> ```
->
-> in every example, even though it is implied and the fact that fold-entity-row shall only ever be used in an entities card has been thoroughly beaten to death at this point.
->
-> I really, really wish I didn't have to...
-
 Another example of customizing the head entity:
 
 ```yaml
@@ -83,10 +72,9 @@ entities:
 ```
 
 > NOTE: On a regrettably similar note as above; if it's not entirely obvious to you why the configuration of `head:` looks this way, please do both of us a favor and go back to read the documentation of the [entities](https://www.home-assistant.io/lovelace/entities/) card again. \
-> Then play around with **just** the entities card for a while, get to know it, try things out, experiment. Then come back to fold-entity-rows in a week or two.
+> Then play around with **just** the entities card for a while, get to know it, try things out, experiment. Then come back to fold-entity-row in a week or two.
 >
-> That also applies if you've never seen `type: section` before and think that's something I just made up. \
-> I will not answer any more questions about its use. It's a Home Assistant feature, not a fold-entity-row one.
+> That also applies if you've never seen `type: section` before and think that's it is special to fold-entity-row. It's a Home Assistant feature, not a fold-entity-row feature.
 
 - Options specified in `group_config:` will be applied to all rows in the fold.
   - Note: `group_config` is not passed through to rows with `type: custom:uix-forge`.
@@ -149,8 +137,6 @@ entities:
       - light.ceiling_lights
       - light.kitchen_lights
 ```
-
-![options](https://user-images.githubusercontent.com/1299821/59793730-8ba54980-92d7-11e9-894b-50d8a437638a.png)
 
 - If the header or any row in the group has the following tap-, hold- or double-tap-action defined, it will toggle the fold open or closed:
 

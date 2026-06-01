@@ -1,0 +1,36 @@
+id: basic_closed
+description: Scenario with fold-entity-row closed
+view_path: basic-closed
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - light.bed_light
+    - type: custom:fold-entity-row
+      head: light.bed_light
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+assertions:
+  - type: element_present
+    root: fold-entity-row
+    selector: "#head"
+  - type: element_present
+    root: fold-entity-row
+    selector: hui-toggle-entity-row
+  - type: element_present
+    root: fold-entity-row
+    selector: ha-icon-button
+  - type: snapshot
+    name: "01_basic_closed.png"
+    threshold: 0.02
