@@ -233,20 +233,6 @@ The following CSS vars are available for styling. In some cases these will overr
 | `--fold-entity-row-toggle-icon-width` | Fold icon width | CSS size | None | `32px` |
 | `--fold-entity-row-toggle-icon-color` | Fold icon color | CSS color | None | `var(--primary-text-color)` |
 
-## More examples
-
-All my test cases are available in the `test/views` directory.
-
-You can a demo in docker by going to the `test` directory and running:
-
-```console
-docker-compose up
-```
-
-Then going to `http://localhost:8125` and logging in with username `dev` and password `dev`.
-
-Or you could use the vscode devcontainer and run the task "`Run hass`".
-
 ## FAQ
 
 ### Why isn't the card header toggle working with all the entities in my fold?
