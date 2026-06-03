@@ -1,0 +1,41 @@
+id: config_errors
+description: Scenario with error states in the config
+view_path: config-errors
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        entity: light.bed_light
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        entity: light.bed_light
+      entities: light.bed_light
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        entity: light.no_light
+      entities:
+        - light.no_light
+    - type: custom:fold-entity-row
+      open: true
+      head: light.bed_light
+      entities: []
+
+assertions:
+  - type: snapshot
+    name: "12_config_errors"
+    threshold: 0.02
