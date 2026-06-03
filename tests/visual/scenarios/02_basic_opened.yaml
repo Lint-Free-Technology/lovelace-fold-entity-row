@@ -9,6 +9,18 @@ setup:
     data:
       entity_id: light.bed_light
       brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.ceiling_lights
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 255
 
 card:
   type: entities
@@ -38,5 +50,5 @@ assertions:
     root: fold-entity-row
     selector: ha-icon-button
   - type: snapshot
-    name: "01_basic_opened.png"
+    name: "02_basic_opened"
     threshold: 0.02

@@ -1,0 +1,96 @@
+id: clickable_config
+description: Scenario with various clickable config options
+view_path: clickable-config
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      head:
+        type: section
+        label: Unfold
+      entities:
+        - light.bed_light
+    - type: custom:fold-entity-row
+      head:
+        type: section
+        label: Don't unfold
+      clickable: false
+      entities:
+        - light.bed_light
+    - type: custom:fold-entity-row
+      head:
+        type: section
+        label: Don't unfold
+        tap_action: test
+      entities:
+        - light.bed_light
+    - type: custom:fold-entity-row
+      head:
+        type: section
+        label: Unfold
+        tap_action: test
+      clickable: true
+      entities:
+        - light.bed_light
+    - type: custom:fold-entity-row
+      head:
+        entity: light.bed_light
+        name: Unfold
+        hold_action:
+          action: toggle
+        double_tap_action:
+          action: toggle
+      clickable: true
+      entities:
+        - light.bed_light
+    - type: custom:fold-entity-row
+      head:
+        entity: light.bed_light
+        name: Unfold tap_action
+        tap_action:
+          action: fire-dom-event
+          fold_row: true
+        hold_action:
+          action: toggle
+      entities:
+        - light.bed_light
+
+interactions:
+  - type: click
+    root: "#states div:nth-child(1) fold-entity-row"
+    selector: "#head"
+    settle_ms: 100
+  - type: click
+    root: "#states div:nth-child(2) fold-entity-row"
+    selector: "#head"
+    settle_ms: 100
+  - type: click
+    root: "#states div:nth-child(3) fold-entity-row"
+    selector: "#head"
+    settle_ms: 100
+  - type: click
+    root: "#states div:nth-child(4) fold-entity-row"
+    selector: "#head"
+    settle_ms: 100
+  - type: click
+    root: "#states div:nth-child(5) fold-entity-row"
+    selector: "#head"
+    settle_ms: 100
+  - type: click
+    root: "#states div:nth-child(6) fold-entity-row"
+    selector: "#head"
+    settle_ms: 100
+
+assertions:
+  - type: snapshot
+    name: "11_clickable_config"
+    threshold: 0.02

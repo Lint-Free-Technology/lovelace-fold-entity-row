@@ -34,3 +34,13 @@ timer:
   demo_timer:
     duration: '00:10:00'
     name: Demo timer
+
+light:
+  - platform: group
+    name: "All Lights"
+    entities:
+      - light.bed_light
+      - light.ceiling_lights
+      - light.kitchen_lights
+      - light.living_room_rgbww_lights
+      - light.office_rgbw_lights

@@ -1,0 +1,47 @@
+id: state_color
+description: Scenario with state_color set to various values
+view_path: state-color
+
+setup:
+  - type: ha_service
+    domain: switch
+    service: turn_on
+    data:
+      entity_id: switch.decorative_lights
+
+cards:
+  - type: entities
+    title: No state_color
+    entities:
+      - switch.decorative_lights
+      - type: custom:fold-entity-row
+        open: true
+        head: switch.decorative_lights
+        entities:
+          - switch.decorative_lights
+  - type: entities
+    title: True state_color
+    state_color: true
+    entities:
+      - switch.decorative_lights
+      - type: custom:fold-entity-row
+        open: true
+        head: switch.decorative_lights
+        entities:
+          - switch.decorative_lights
+  - type: entities
+    title: Group state_color
+    entities:
+      - switch.decorative_lights
+      - type: custom:fold-entity-row
+        open: true
+        group_config:
+          state_color: true
+        head: switch.decorative_lights
+        entities:
+          - switch.decorative_lights
+
+assertions:
+  - type: snapshot
+    name: "09_state_color"
+    threshold: 0.02

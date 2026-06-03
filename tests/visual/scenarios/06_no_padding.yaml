@@ -1,6 +1,6 @@
-id: basic_closed
-description: Scenario with fold-entity-row closed
-view_path: basic-closed
+id: no_padding
+description: Scenario with no padding of items
+view_path: no-padding
 
 setup:
   - type: ha_service
@@ -25,24 +25,21 @@ setup:
 card:
   type: entities
   entities:
-    - light.bed_light
     - type: custom:fold-entity-row
       head: light.bed_light
+      padding: 0
       entities:
         - light.bed_light
         - light.ceiling_lights
         - light.kitchen_lights
 
-assertions:
-  - type: element_present
-    root: fold-entity-row
-    selector: "#head"
-  - type: element_present
-    root: fold-entity-row
-    selector: hui-toggle-entity-row
-  - type: element_present
+interactions:
+  - type: click
     root: fold-entity-row
     selector: ha-icon-button
+    settle_ms: 100
+
+assertions:
   - type: snapshot
-    name: "01_basic_closed"
+    name: "06_no_padding"
     threshold: 0.02
