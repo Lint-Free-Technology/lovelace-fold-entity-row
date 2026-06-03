@@ -28,13 +28,13 @@ entities:
 
 This will show the row specified in `head:` with an arrow next to it. When clicked, the rows specified in `entities:` will be revealed.
 
-![fold-entity-row](https://user-images.githubusercontent.com/1299821/59793417-ceb2ed00-92d6-11e9-9a7a-ad0a1a85b5e6.png)
+![fold-entity-row basic](docs/source/assets/images/01_basic_usage.gif)
 
-> NOTE: You wouldn't _believe_ how many people miss the first line in this section.
+> NOTE: In case you missed this in the first line in this section.
 >
 > Add this **TO AN ENTITIES CARD**.
 >
-> This is NOT meant to be used except in an entities card. Any usage outside an entities card is entirely unsupported, and I won't help you fix it.
+> This is NOT meant to be used except in an entities card. Any usage outside an entities card is entirely unsupported, and no help will be given.
 
 ## Usage
 
@@ -54,16 +54,7 @@ entities:
       - light.kitchen_lights
 ```
 
-> NOTE: I'm sorry, dear reader, for insulting your intelligence and including the two lines:
->
-> ```yaml
-> type: entities
-> entities:
-> ```
->
-> in every example, even though it is implied and the fact that fold-entity-row shall only ever be used in an entities card has been thoroughly beaten to death at this point.
->
-> I really, really wish I didn't have to...
+![Head config example](docs/source/assets/images/02_head.png)
 
 Another example of customizing the head entity:
 
@@ -82,11 +73,12 @@ entities:
       - light.kitchen_lights
 ```
 
+![Head config example 2](docs/source/assets/images/03_head_2.png)
+
 > NOTE: On a regrettably similar note as above; if it's not entirely obvious to you why the configuration of `head:` looks this way, please do both of us a favor and go back to read the documentation of the [entities](https://www.home-assistant.io/lovelace/entities/) card again. \
-> Then play around with **just** the entities card for a while, get to know it, try things out, experiment. Then come back to fold-entity-rows in a week or two.
+> Then play around with **just** the entities card for a while, get to know it, try things out, experiment. Then come back to fold-entity-row in a week or two.
 >
-> That also applies if you've never seen `type: section` before and think that's something I just made up. \
-> I will not answer any more questions about its use. It's a Home Assistant feature, not a fold-entity-row one.
+> That also applies if you've never seen `type: section` before and think that's it is special to fold-entity-row. It's a Home Assistant feature, not a fold-entity-row feature.
 
 - Options specified in `group_config:` will be applied to all rows in the fold.
   - Note: `group_config` is not passed through to rows with `type: custom:uix-forge`.
@@ -107,6 +99,8 @@ entities:
       - light.kitchen_lights
 ```
 
+![Group config example](docs/source/assets/images/04_group_config.png)
+
 - The left side padding can be adjusted by the `padding:` parameter (value in pixels).
 
 ```yaml
@@ -125,14 +119,18 @@ entities:
           - light.kitchen_lights
 ```
 
+![Padding config example](docs/source/assets/images/05_padding.png)
+
 - Setting `head:` to a [group](https://www.home-assistant.io/integrations/group/) (including [light group](https://www.home-assistant.io/integrations/light.group/) or [cover group](https://www.home-assistant.io/integrations/cover.group/) ) will populate the entities list with the entities of that group.
 
 ```yaml
 type: entities
 entities:
   - type: custom:fold-entity-row
-    head: group.all_lights
+    head: light.all_lights
 ```
+
+![Group entity example](docs/source/assets/images/06_group_entity.png)
 
 - Setting `open:` to true will make the fold open by default.
 
@@ -149,8 +147,6 @@ entities:
       - light.ceiling_lights
       - light.kitchen_lights
 ```
-
-![options](https://user-images.githubusercontent.com/1299821/59793730-8ba54980-92d7-11e9-894b-50d8a437638a.png)
 
 - If the header or any row in the group has the following tap-, hold- or double-tap-action defined, it will toggle the fold open or closed:
 
@@ -184,6 +180,8 @@ entities:
               - light.bed_light
 ```
 
+![Nested folds example](docs/source/assets/images/07_nested_folds.png)
+
 - Folds can be populated by any wrapping element that fills the `entities:` parameter, such as [auto-entities](https://github.com/thomasloven/lovelace-auto-entities)
 
 ```yaml
@@ -192,7 +190,7 @@ entities:
   - type: custom:auto-entities
     filter:
       include:
-        - domain: sensor
+        - domain: light
     card:
       type: custom:fold-entity-row
       head:
@@ -200,25 +198,9 @@ entities:
         label: Automatically populated
 ```
 
+![Auto-entities example](docs/source/assets/images/08_auto_entities.png)
+
 > Note: While the built-in `entity-filter` also does work, it is not recommended due to performance issues.
-
-![advanced](https://user-images.githubusercontent.com/1299821/59793890-ed65b380-92d7-11e9-9ed6-8dc1c15d749b.png)
-
-- If `entity` (not `entities`) is set and is a group, it will be expanded
-
-```yaml
-type: custom:auto-entities
-card:
-  type: entities
-  title: All groups
-filter:
-  include:
-    - domain: group
-      options:
-        type: custom:fold-entity-row
-```
-
-![image](https://user-images.githubusercontent.com/1299821/62471886-e4ed0d80-b79d-11e9-97b4-7edb721338cc.png)
 
 ## Styling
 
@@ -233,19 +215,31 @@ The following CSS vars are available for styling. In some cases these will overr
 | `--fold-entity-row-toggle-icon-width` | Fold icon width | CSS size | None | `32px` |
 | `--fold-entity-row-toggle-icon-color` | Fold icon color | CSS color | None | `var(--primary-text-color)` |
 
-## More examples
+### Styling example applying styles via UIX
 
-All my test cases are available in the `test/views` directory.
-
-You can a demo in docker by going to the `test` directory and running:
-
-```console
-docker-compose up
+```yaml
+type: entities
+entities:
+  - light.bed_light
+  - type: custom:fold-entity-row
+    head: light.bed_light
+    entities:
+      - light.bed_light
+      - light.ceiling_lights
+      - light.kitchen_lights
+    uix:
+      style: |
+        :host {
+          --fold-entity-row-toggle-icon-width: 24px;
+          --fold-entity-row-label-margin-left: 0px;
+          --fold-entity-row-padding: 0px;
+          --fold-entity-row-transition-duration: 1ms;
+          --fold-entity-row-toggle-icon-color: red;
+          --fold-entity-row-gap: 0px;
+        }
 ```
 
-Then going to `http://localhost:8125` and logging in with username `dev` and password `dev`.
-
-Or you could use the vscode devcontainer and run the task "`Run hass`".
+![UIX styling example](docs/source/assets/images/09_uix_styling.png)
 
 ## FAQ
 

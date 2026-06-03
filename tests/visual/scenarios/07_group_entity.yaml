@@ -1,0 +1,38 @@
+id: group_entity
+description: Scenario with group entity
+view_path: group-entity
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      head:
+        entity: light.all_lights
+        secondary_info: entity-id
+    - type: custom:fold-entity-row
+      head: light.all_lights
+      entities:
+        - light.bed_light
+
+interactions:
+  - type: click
+    root: "#states div:nth-child(1) fold-entity-row"
+    selector: ha-icon-button
+    settle_ms: 100
+  - type: click
+    root: "#states div:nth-child(2) fold-entity-row"
+    selector: ha-icon-button
+    settle_ms: 100
+
+assertions:
+  - type: snapshot
+    name: "07_group_entity"
+    threshold: 0.02

@@ -1,0 +1,6 @@
+- local_path: ../dist/fold-entity-row.js
+  filename: fold-entity-row.js
+
+- repo: Lint-Free-Technology/lovelace-auto-entities
+  asset: auto-entities.js
+  filename: auto-entities.js

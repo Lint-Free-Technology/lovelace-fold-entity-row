@@ -1,0 +1,45 @@
+id: no_padding
+description: Scenario with no padding of items
+view_path: no-padding
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.ceiling_lights
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      head: light.bed_light
+      padding: 0
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+interactions:
+  - type: click
+    root: fold-entity-row
+    selector: ha-icon-button
+    settle_ms: 100
+
+assertions:
+  - type: snapshot
+    name: "06_no_padding"
+    threshold: 0.02

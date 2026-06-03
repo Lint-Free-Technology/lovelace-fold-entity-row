@@ -1,0 +1,24 @@
+id: doc_group_entity
+description: README group entity example
+view_path: readme-group-entity
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head: light.all_lights
+
+doc_image:
+  output: docs/source/assets/images/06_group_entity.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02

@@ -1,0 +1,27 @@
+id: section_head
+description: Scenario with section head
+view_path: section-head
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+
+card:
+  type: entities
+  title: Entities with section head
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: Heading Text
+      entities:
+        - light.bed_light
+
+assertions:
+  - type: snapshot
+    name: "10_section_head"
+    threshold: 0.02

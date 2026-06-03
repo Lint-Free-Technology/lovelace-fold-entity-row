@@ -1,0 +1,46 @@
+id: doc_uix_styling
+description: README UIX styling example
+view_path: readme-uix-styling
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  title: UIX Styling Example
+  entities:
+    - type: custom:fold-entity-row
+      head:
+        type: section
+        label: Styling with CSS Variables
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+      uix:
+        style: |
+          :host {
+            --fold-entity-row-toggle-icon-width: 24px;
+            --fold-entity-row-label-margin-left: 0px;
+            --fold-entity-row-padding: 0px;
+            --fold-entity-row-transition-duration: 1ms;
+            --fold-entity-row-toggle-icon-color: red;
+            --fold-entity-row-gap: 0px;
+          }
+
+interactions:
+  - type: click
+    root: fold-entity-row
+    selector: ha-icon-button
+    settle_ms: 100
+
+doc_image:
+  output: docs/source/assets/images/09_uix_styling.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02

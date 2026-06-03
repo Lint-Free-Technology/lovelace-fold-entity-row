@@ -1,0 +1,36 @@
+id: doc_nested_folds
+description: README nested folds example
+view_path: readme-nested-folds
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: Nested
+      entities:
+        - type: custom:fold-entity-row
+          head: light.bed_light
+          open: true
+          entities:
+            - type: custom:fold-entity-row
+              head: light.bed_light
+              open: true
+              entities:
+                - light.bed_light
+
+doc_image:
+  output: docs/source/assets/images/07_nested_folds.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02

@@ -1,0 +1,31 @@
+id: doc_padding
+description: README padding example
+view_path: readme-padding
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: padding
+      padding: 5
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+doc_image:
+  output: docs/source/assets/images/05_padding.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02

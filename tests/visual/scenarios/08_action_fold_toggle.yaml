@@ -1,0 +1,48 @@
+id: action_fold_toggle
+description: Scenario with fold toggle action
+view_path: action-fold-toggle
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.ceiling_lights
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      head: 
+        entity: light.bed_light
+        tap_action:
+          action: fire-dom-event
+          fold_row: true
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+interactions:
+  - type: click
+    root: fold-entity-row
+    selector: "#head"
+    settle_ms: 100
+
+assertions:
+  - type: snapshot
+    name: "08_action_fold_toggle"
+    threshold: 0.02

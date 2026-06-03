@@ -1,0 +1,54 @@
+id: basic_open
+description: Scenario with fold-entity-row opened 
+view_path: basic-open
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.ceiling_lights
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - light.bed_light
+    - type: custom:fold-entity-row
+      head: light.bed_light
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+interactions:
+  - type: click
+    root: fold-entity-row
+    selector: ha-icon-button
+    settle_ms: 100
+
+assertions:
+  - type: element_present
+    root: fold-entity-row
+    selector: "#head"
+  - type: element_present
+    root: fold-entity-row
+    selector: hui-toggle-entity-row
+  - type: element_present
+    root: fold-entity-row
+    selector: ha-icon-button
+  - type: snapshot
+    name: "02_basic_opened"
+    threshold: 0.02

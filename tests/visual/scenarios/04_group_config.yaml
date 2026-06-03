@@ -1,0 +1,46 @@
+id: group_config
+description: Scenario with group_config to set all icons as gear
+view_path: group-config
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.ceiling_lights
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      head: light.bed_light
+      group_config:
+        icon: mdi:cog
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+interactions:
+  - type: click
+    root: fold-entity-row
+    selector: ha-icon-button
+    settle_ms: 100
+
+assertions:
+  - type: snapshot
+    name: "04_group_config"
+    threshold: 0.02
