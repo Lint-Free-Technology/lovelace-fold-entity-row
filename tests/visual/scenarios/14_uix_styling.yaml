@@ -1,0 +1,43 @@
+id: uix_styling
+description: Scenario with various UIX styling options
+view_path: uix-styling
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        entity: light.bed_light
+        uix:
+          style: |
+            :host {
+              color: red;
+            }
+      entities:
+        - entity: light.bed_light
+          uix:
+            style: |
+              :host {
+                color: blue;
+              }
+        - light.ceiling_lights
+        - entity: light.kitchen_lights
+          uix:
+            style: |
+              :host {
+                color: green;
+              }
+
+assertions:
+  - type: snapshot
+    name: "14_uix_styling"
+    threshold: 0.02

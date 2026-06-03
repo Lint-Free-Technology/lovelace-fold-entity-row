@@ -1,0 +1,37 @@
+id: auto_entities_added_entity
+description: Scenario with auto-entities card with added entity
+view_path: auto-entities-added-entity
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:auto-entities
+      filter:
+        include:
+          - domain: light
+      card:
+        type: custom:fold-entity-row
+        open: true
+        head:
+          type: section
+          label: Automatically populated
+      entities:
+        - type: custom:fold-entity-row
+          head: light.bed_light
+          open: true
+          entities:
+            - light.ceiling_lights
+            - light.kitchen_lights
+
+assertions:
+  - type: snapshot
+    name: "18_auto_entities_added_entity"
+    threshold: 0.02

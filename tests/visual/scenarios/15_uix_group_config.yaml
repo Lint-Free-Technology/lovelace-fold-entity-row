@@ -1,0 +1,41 @@
+id: uix_group_config
+description: Scenario with various UIX styling options applied via group_config
+view_path: uix-group-config
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_off
+    data:
+      entity_id: light.ceiling_lights
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        entity: light.bed_light
+      entities:
+        - entity: light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+      group_config:
+        uix:
+          style: |
+            :host {
+              {% if is_state(config.entity, 'on') %}
+              color: red;
+              {% endif %}
+            }
+
+assertions:
+  - type: snapshot
+    name: "15_uix_group_config"
+    threshold: 0.02

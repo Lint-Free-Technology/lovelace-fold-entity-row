@@ -1,0 +1,30 @@
+id: auto_entities
+description: Scenario with auto-entities card
+view_path: auto-entities
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:auto-entities
+      filter:
+        include:
+          - domain: light
+      card:
+        type: custom:fold-entity-row
+        open: true
+        head:
+          type: section
+          label: Automatically populated
+
+assertions:
+  - type: snapshot
+    name: "17_auto_entities"
+    threshold: 0.02
