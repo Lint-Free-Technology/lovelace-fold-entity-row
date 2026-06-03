@@ -1,0 +1,31 @@
+id: doc_auto_entities
+description: README auto entities example
+view_path: readme-auto-entities
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:auto-entities
+      filter:
+        include:
+          - domain: light
+      card:
+        type: custom:fold-entity-row
+        open: true
+        head:
+          type: section
+          label: Automatically populated
+
+doc_image:
+  output: docs/source/assets/images/08_auto_entities.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02

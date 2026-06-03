@@ -1,0 +1,32 @@
+id: doc_readme_head_2
+description: README head example
+view_path: readme-head-2
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - light.bed_light
+    - entity: light.bed_light
+      icon: mdi:lamp
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        entity: light.bed_light
+        icon: mdi:lamp
+      entities:
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+doc_image:
+  output: docs/source/assets/images/03_head_2.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02

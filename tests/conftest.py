@@ -9,6 +9,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 os.environ.setdefault("HA_CONFIG_PATH", str(REPO_ROOT / "tests" / "ha-config"))
 os.environ.setdefault("HA_PLUGINS_YAML", str(REPO_ROOT / "tests" / "plugins.yaml"))
+os.environ.setdefault("HA_INTEGRATIONS_YAML", str(REPO_ROOT / "tests" / "integrations.yaml"))
 
 import ha_testcontainer.visual.scenario_runner as _sr  # noqa: E402
 

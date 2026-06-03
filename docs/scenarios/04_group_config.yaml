@@ -1,0 +1,38 @@
+id: doc_group_config
+description: README group config example
+view_path: readme-group-config
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_off
+    data:
+      entity_id: light.all_lights
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: group_config
+      group_config:
+        secondary_info: last-changed
+        icon: mdi:desk-lamp
+      entities:
+        - light.bed_light
+        - light.ceiling_lights
+        - light.kitchen_lights
+
+doc_image:
+  output: docs/source/assets/images/04_group_config.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02

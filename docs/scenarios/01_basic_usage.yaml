@@ -7,7 +7,7 @@ setup:
     domain: light
     service: turn_on
     data:
-      entity_id: light.bed_light
+      entity_id: light.all_lights
       brightness: 255
 
 card:

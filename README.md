@@ -54,6 +54,8 @@ entities:
       - light.kitchen_lights
 ```
 
+![Head config example](docs/source/assets/images/02_head.png)
+
 Another example of customizing the head entity:
 
 ```yaml
@@ -70,6 +72,8 @@ entities:
       - light.ceiling_lights
       - light.kitchen_lights
 ```
+
+![Head config example 2](docs/source/assets/images/03_head_2.png)
 
 > NOTE: On a regrettably similar note as above; if it's not entirely obvious to you why the configuration of `head:` looks this way, please do both of us a favor and go back to read the documentation of the [entities](https://www.home-assistant.io/lovelace/entities/) card again. \
 > Then play around with **just** the entities card for a while, get to know it, try things out, experiment. Then come back to fold-entity-row in a week or two.
@@ -95,6 +99,8 @@ entities:
       - light.kitchen_lights
 ```
 
+![Group config example](docs/source/assets/images/04_group_config.png)
+
 - The left side padding can be adjusted by the `padding:` parameter (value in pixels).
 
 ```yaml
@@ -113,14 +119,18 @@ entities:
           - light.kitchen_lights
 ```
 
+![Padding config example](docs/source/assets/images/05_padding.png)
+
 - Setting `head:` to a [group](https://www.home-assistant.io/integrations/group/) (including [light group](https://www.home-assistant.io/integrations/light.group/) or [cover group](https://www.home-assistant.io/integrations/cover.group/) ) will populate the entities list with the entities of that group.
 
 ```yaml
 type: entities
 entities:
   - type: custom:fold-entity-row
-    head: group.all_lights
+    head: light.all_lights
 ```
+
+![Group entity example](docs/source/assets/images/06_group_entity.png)
 
 - Setting `open:` to true will make the fold open by default.
 
@@ -170,6 +180,8 @@ entities:
               - light.bed_light
 ```
 
+![Nested folds example](docs/source/assets/images/07_nested_folds.png)
+
 - Folds can be populated by any wrapping element that fills the `entities:` parameter, such as [auto-entities](https://github.com/thomasloven/lovelace-auto-entities)
 
 ```yaml
@@ -178,7 +190,7 @@ entities:
   - type: custom:auto-entities
     filter:
       include:
-        - domain: sensor
+        - domain: light
     card:
       type: custom:fold-entity-row
       head:
@@ -186,25 +198,9 @@ entities:
         label: Automatically populated
 ```
 
+![Auto-entities example](docs/source/assets/images/08_auto_entities.png)
+
 > Note: While the built-in `entity-filter` also does work, it is not recommended due to performance issues.
-
-![advanced](https://user-images.githubusercontent.com/1299821/59793890-ed65b380-92d7-11e9-9ed6-8dc1c15d749b.png)
-
-- If `entity` (not `entities`) is set and is a group, it will be expanded
-
-```yaml
-type: custom:auto-entities
-card:
-  type: entities
-  title: All groups
-filter:
-  include:
-    - domain: group
-      options:
-        type: custom:fold-entity-row
-```
-
-![image](https://user-images.githubusercontent.com/1299821/62471886-e4ed0d80-b79d-11e9-97b4-7edb721338cc.png)
 
 ## Styling
 
@@ -218,6 +214,32 @@ The following CSS vars are available for styling. In some cases these will overr
 | `--fold-entity-row-transition-duration` | Fold transition duration for animating open/close of the fold | CSS duration | None | `150ms` |
 | `--fold-entity-row-toggle-icon-width` | Fold icon width | CSS size | None | `32px` |
 | `--fold-entity-row-toggle-icon-color` | Fold icon color | CSS color | None | `var(--primary-text-color)` |
+
+### Styling example applying styles via UIX
+
+```yaml
+type: entities
+entities:
+  - light.bed_light
+  - type: custom:fold-entity-row
+    head: light.bed_light
+    entities:
+      - light.bed_light
+      - light.ceiling_lights
+      - light.kitchen_lights
+    uix:
+      style: |
+        :host {
+          --fold-entity-row-toggle-icon-width: 24px;
+          --fold-entity-row-label-margin-left: 0px;
+          --fold-entity-row-padding: 0px;
+          --fold-entity-row-transition-duration: 1ms;
+          --fold-entity-row-toggle-icon-color: red;
+          --fold-entity-row-gap: 0px;
+        }
+```
+
+![UIX styling example](docs/source/assets/images/09_uix_styling.png)
 
 ## FAQ
 

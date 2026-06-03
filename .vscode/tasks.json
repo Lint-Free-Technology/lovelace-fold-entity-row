@@ -31,7 +31,7 @@
     {
       "label": "HA: Start persistent server",
       "type": "shell",
-      "command": "source .venv/bin/activate && HA_VERSION=$(tr -d '[:space:]' < tests/HA_VERSION) HA_CONFIG_PATH=tests/ha-config HA_PLUGINS_YAML=tests/plugins.yaml python -m ha_testcontainer.ha_server",
+      "command": "source .venv/bin/activate && HA_VERSION=$(tr -d '[:space:]' < tests/HA_VERSION) HA_CONFIG_PATH=tests/ha-config HA_PLUGINS_YAML=tests/plugins.yaml HA_INTEGRATIONS_YAML=tests/integrations.yaml python -m ha_testcontainer.ha_server",
       "isBackground": true,
       "problemMatcher": {
         "owner": "ha-server",
