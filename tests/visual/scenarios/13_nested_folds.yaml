@@ -1,0 +1,35 @@
+id: nested_folds
+description: Scenario with nested folds
+view_path: nested-folds
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: Nested Folds
+      entities:
+        - light.bed_light
+        - type: custom:fold-entity-row
+          open: true
+          head:
+            type: section
+            label: Nested Fold 1
+          entities:
+            - light.kitchen_lights
+            - light.ceiling_lights
+
+assertions:
+  - type: snapshot
+    name: "13_nested_folds"
+    threshold: 0.02

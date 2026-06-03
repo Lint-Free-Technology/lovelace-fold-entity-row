@@ -1,0 +1,50 @@
+id: uix_scrollbars
+description: Scenario with various UIX styling forcing scrollbars to be visible.
+view_path: uix-scrollbars
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+  - type: ha_service
+    domain: light
+    service: turn_off
+    data:
+      entity_id: light.ceiling_lights
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        entity: light.bed_light
+        name: Default
+      uix:
+        style: |
+          .container {
+            max-height: 300px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+          }
+      entities:
+        - light.bed_light
+        - light.bed_light
+        - light.bed_light
+        - type: section
+        - light.bed_light
+        - light.bed_light
+        - light.bed_light
+        - light.bed_light
+        - light.bed_light
+        - light.bed_light
+        - light.bed_light
+        - light.bed_light
+
+assertions:
+  - type: snapshot
+    name: "16_uix_scrollbars"
+    threshold: 0.02
