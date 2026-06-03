@@ -1,3 +1,13 @@
+## [3.0.4](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.3...v3.0.4) (2026-06-03)
+
+### 📔 Documentation
+
+* Update readme with up to date visual examples ([5828ba3](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/5828ba3ae8b240fdaac9065919f30ce260eaf3de))
+
+### ⚙️ Miscellaneous
+
+* Use ha-testcontainer for visual testing and documentation images/animations. ([eb0bca5](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/eb0bca571ebda6e4b227f814b91198b11e8629f5))
+
 ## [3.0.3](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.2...v3.0.3) (2026-05-13)
 
 ### ⚙️ Miscellaneous
