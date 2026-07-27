@@ -1,3 +1,17 @@
+## [4.0.0-beta.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.4...v4.0.0-beta.1) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+* Home Assistant 2026.8.0 or greater required.
+
+### 📦 Dependency Upgrades
+
+* Update to Typescript v7, move to esbuild ([a66a62f](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/a66a62f8bf56014599befbb1dc82efedb6868f21))
+
+### ⚙️ Miscellaneous
+
+* Migrate `state_color` to `color` when reading parent card for color options and also `group_config`. `state_color: true` is migrated to `color: state`. `state_color: false` is migrated to `color: none`. Default is `color: state`. These changes reflect changes in Home Assistant 2026.8.0. ([7120656](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/7120656fc07ce249e991b2c46c1aee5e9fbcd081))
+
 ## [3.0.4](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.3...v3.0.4) (2026-06-03)
 
 ### 📔 Documentation
