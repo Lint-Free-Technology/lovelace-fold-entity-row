@@ -1,6 +1,6 @@
-id: state_color
-description: Scenario with state_color set to various values
-view_path: state-color
+id: color_color
+description: Scenario with color set to various values
+view_path: color-color
 
 setup:
   - type: ha_service
@@ -11,8 +11,8 @@ setup:
 
 cards:
   - type: entities
-    title: False state_color
-    state_color: false
+    title: False color
+    color: none
     entities:
       - switch.decorative_lights
       - type: custom:fold-entity-row
@@ -21,8 +21,8 @@ cards:
         entities:
           - switch.decorative_lights
   - type: entities
-    title: True state_color
-    state_color: true
+    title: State color
+    color: state
     entities:
       - switch.decorative_lights
       - type: custom:fold-entity-row
@@ -31,13 +31,13 @@ cards:
         entities:
           - switch.decorative_lights
   - type: entities
-    title: Group state_color
+    title: Group color
     entities:
       - switch.decorative_lights
       - type: custom:fold-entity-row
         open: true
         group_config:
-          state_color: false
+          color: red
         head: switch.decorative_lights
         entities:
           - switch.decorative_lights
@@ -66,7 +66,7 @@ assertions:
       - fold-entity-row
     selector: div.container div hui-toggle-entity-row
     property: "_config.color"
-    expected: "none"
+    expected: "red"
   - type: snapshot
-    name: "09_state_color"
+    name: "09a_color_color"
     threshold: 0.01

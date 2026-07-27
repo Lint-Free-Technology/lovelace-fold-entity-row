@@ -22,6 +22,7 @@ interface FoldEntityRowConfig {
   clickable?: boolean;
   mute?: boolean;
   state_color?: boolean;
+  color?: string;
 }
 
 const DEFAULT_CONFIG = {
@@ -125,15 +126,23 @@ class FoldEntityRow extends LitElement {
   async _createRow(config: any, head = false): Promise<LovelaceElement> {
     const helpers = await (window as any).loadCardHelpers();
     const parentCard = await findParentCard(this);
-    const state_color =
-      this._config.state_color ??
-      parentCard?._config?.state_color ??
-      parentCard?.config?.state_color;
+    const localStateColorMigrated = this._config.state_color == true ? "state" : this._config.state_color == false ? "none" : undefined;
+    const parentStateColorMigrated = parentCard?._config?.state_color == true ? "state" : parentCard?._config?.state_color == false ? "none" : undefined;
+    const groupConfig = { ...this._config.group_config };
+    const groupColor = groupConfig.color ?? (groupConfig.state_color == true ? "state" : groupConfig.state_color == false ? "none" : undefined);
+    delete groupConfig.state_color;
+    delete groupConfig.color;
     const shouldApplyGroupConfig =
       !head && config?.type !== "custom:uix-forge";
+    const color =
+      (shouldApplyGroupConfig ? groupColor : undefined) ??
+      this._config.color ??
+      localStateColorMigrated ??
+      parentCard?._config?.color ??
+      parentStateColorMigrated ?? "state";
     config = {
-      state_color,
-      ...(shouldApplyGroupConfig ? this._config.group_config : {}),
+      color,
+      ...(shouldApplyGroupConfig ? groupConfig : {}),
       ...config,
     };
 
