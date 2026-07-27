@@ -81,7 +81,7 @@ class FoldEntityRow extends LitElement {
           };
         } else {
           actionHandlerBind(head, { fold_entity_row: true });
-          head.addEventListener("action", (ev: CustomEvent) => this.toggle(ev));
+          head.addEventListener("action", (ev) => this.toggle(ev as CustomEvent));
         }
 
         head.tabIndex = 0;
