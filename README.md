@@ -18,6 +18,7 @@ Add this to an [entities](https://www.home-assistant.io/lovelace/entities/) card
 type: entities
 entities:
   - light.bed_light
+
   - type: custom:fold-entity-row
     head: light.bed_light
     entities:
@@ -30,11 +31,6 @@ This will show the row specified in `head:` with an arrow next to it. When click
 
 ![fold-entity-row basic](docs/source/assets/images/01_basic_usage.gif)
 
-> NOTE: In case you missed this in the first line in this section.
->
-> Add this **TO AN ENTITIES CARD**.
->
-> This is NOT meant to be used except in an entities card. Any usage outside an entities card is entirely unsupported, and no help will be given.
 
 ## Usage
 
@@ -75,10 +71,6 @@ entities:
 
 ![Head config example 2](docs/source/assets/images/03_head_2.png)
 
-> NOTE: On a regrettably similar note as above; if it's not entirely obvious to you why the configuration of `head:` looks this way, please do both of us a favor and go back to read the documentation of the [entities](https://www.home-assistant.io/lovelace/entities/) card again. \
-> Then play around with **just** the entities card for a while, get to know it, try things out, experiment. Then come back to fold-entity-row in a week or two.
->
-> That also applies if you've never seen `type: section` before and think that's it is special to fold-entity-row. It's a Home Assistant feature, not a fold-entity-row feature.
 
 - Options specified in `group_config:` will be applied to all rows in the fold.
   - Note: `group_config` is not passed through to rows with `type: custom:uix-forge`.
