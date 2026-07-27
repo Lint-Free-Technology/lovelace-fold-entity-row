@@ -31,7 +31,6 @@ This will show the row specified in `head:` with an arrow next to it. When click
 
 ![fold-entity-row basic](docs/source/assets/images/01_basic_usage.gif)
 
-
 ## Usage
 
 - `head:` and any row in `entities:` can be customized in exactly the same ways as ordinary [entities](https://www.home-assistant.io/lovelace/entities/) card rows.
@@ -70,7 +69,6 @@ entities:
 ```
 
 ![Head config example 2](docs/source/assets/images/03_head_2.png)
-
 
 - Options specified in `group_config:` will be applied to all rows in the fold.
   - Note: `group_config` is not passed through to rows with `type: custom:uix-forge`.
@@ -150,6 +148,39 @@ tap_action:
 
 - Fold entity row will try to figure out if the header should be clickable to show and hide the fold or not. If it guesses wrong, you can help it with `clickable: true` or `clickable: false`. \
   This should only be used in exceptions, though. If your row supports `tap_action` use `fire-dom-event` instead.
+
+## State color of entities
+
+- Fold entity row will read parent card for `color` config for rows. Since Home Assistant 2026.8.0 `color` defaults to `color: state` meaning entity state will be set based on the `state`, `domain`, and `device_class` of the entity. You can set `color` directly on an entity row or in `group_config`. To take default color, set `color` to none. It accepts `state`, `none`, a Home Assistant [color token](https://www.home-assistant.io/dashboards/tile/#available-colors), or a hex color code.
+
+Example setting `color: none` on a row and `color: red` on using `group_config`.
+
+```yaml
+  - type: entities
+    title: None color on row
+    entities:
+      - switch.decorative_lights
+      - type: custom:fold-entity-row
+        open: true
+        head: switch.decorative_lights
+        entities:
+          - type: simple-entity
+            entity: switch.decorative_lights
+            color: none
+  - type: entities
+    title: Group color red
+    entities:
+      - switch.decorative_lights
+      - type: custom:fold-entity-row
+        open: true
+        group_config:
+          color: red
+        head: switch.decorative_lights
+        entities:
+          - switch.decorative_lights
+```
+
+![State color config example](docs/source/assets/images/10_color_color.png)
 
 ## Advanced
 

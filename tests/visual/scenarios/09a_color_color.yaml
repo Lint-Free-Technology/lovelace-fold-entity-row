@@ -11,7 +11,7 @@ setup:
 
 cards:
   - type: entities
-    title: False color
+    title: None color
     color: none
     entities:
       - switch.decorative_lights
