@@ -1,3 +1,9 @@
+## [4.0.0-beta.2](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2026-07-28)
+
+### ⚙️ Miscellaneous
+
+* Set minimum HA Version to 2026.8.0.dev0 so HACS will allow against dev builds and greater. ([81aee4a](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/81aee4a1a24b40d6403d624744b2bd052b80fb2a))
+
 ## [4.0.0-beta.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v3.0.4...v4.0.0-beta.1) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES
