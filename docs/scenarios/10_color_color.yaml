@@ -1,0 +1,40 @@
+id: doc_color_color
+description: Scenario with color set to various values
+view_path: doc-color-color
+
+setup:
+  - type: ha_service
+    domain: switch
+    service: turn_on
+    data:
+      entity_id: switch.decorative_lights
+
+cards:
+  - type: entities
+    title: None color on row
+    entities:
+      - switch.decorative_lights
+      - type: custom:fold-entity-row
+        open: true
+        head: switch.decorative_lights
+        entities:
+          - type: simple-entity
+            entity: switch.decorative_lights
+            color: none
+  - type: entities
+    title: Group color red
+    entities:
+      - switch.decorative_lights
+      - type: custom:fold-entity-row
+        open: true
+        group_config:
+          color: red
+        head: switch.decorative_lights
+        entities:
+          - switch.decorative_lights
+
+doc_image:
+  output: docs/source/assets/images/10_color_color.png
+  root: hui-grid-section
+  padding: 16
+  threshold: 0.01
