@@ -4,3 +4,11 @@
 - repo: Lint-Free-Technology/lovelace-auto-entities
   asset: auto-entities.js
   filename: auto-entities.js
+
+- repo: Lint-Free-Technology/lovelace-template-entity-row
+  asset: template-entity-row.js
+  filename: template-entity-row.js
+
+- repo: benct/lovelace-multiple-entity-row
+  asset: multiple-entity-row.js
+  filename: multiple-entity-row.js
