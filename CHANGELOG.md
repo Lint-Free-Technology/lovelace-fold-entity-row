@@ -1,3 +1,9 @@
+## [4.0.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.0...v4.0.1) (2026-08-27)
+
+### 🐞 Bug Fixes
+
+* Listen to "hass-action" on head and toggle fold when action is `fire-dom-event` and includes `fold_row: true`. Restores `fold_row` action when using custom cards that use "hass-action" like custom:template-entity-row (>3.0.0) and custom:multiple-entity-row row and entity actions. ([#49](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/issues/49)) ([cde35a4](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/cde35a4607408b2d0725f80c746be3ca3707a439)), references [#48](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/issues/48)
+
 ## [4.0.1-beta.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.0...v4.0.1-beta.1) (2026-08-27)
 
 ### 🐞 Bug Fixes
