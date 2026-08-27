@@ -280,7 +280,11 @@ class FoldEntityRow extends LitElement {
 
   _customEvent(ev: CustomEvent) {
     const detail: any = ev.detail;
-    if (detail.fold_row) {
+    // Support action coming from an "ll-action" event created by Frontend actionHandler event or generic "hass-action" event used by many custom cards
+    const actionFoldRow = detail.fold_row;
+    const hassActionFoldRow = detail.action && detail.config?.[`${detail.action}_action`]?.action == "fire-dom-event" && detail.config?.[`${detail.action}_action`]?.fold_row;
+    const foldRow = actionFoldRow || hassActionFoldRow;
+    if (foldRow) {
       this.toggle(ev);
     }
   }
@@ -296,6 +300,7 @@ class FoldEntityRow extends LitElement {
       <div
         id="head"
         @ll-custom=${this._customEvent}
+        @hass-action=${this._customEvent}
         aria-expanded=${this.open}
       >
         ${until(this.head, "")}

@@ -1,0 +1,50 @@
+id: head_tap_action_fold_row
+description: Scenario with head tap action configured to fold the row
+view_path: head-tap-action-fold-row
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.bed_light
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      head:
+        type: custom:template-entity-row
+        entity: light.bed_light
+        tap_action:
+          action: fire-dom-event
+          fold_row: true
+      entities:
+        - entity: light.bed_light
+    - type: custom:fold-entity-row
+      head:
+        type: custom:multiple-entity-row
+        entity: light.bed_light
+        entities:
+          - entity: light.bed_light
+            tap_action:
+              action: fire-dom-event
+              fold_row: true
+      entities:
+        - entity: light.bed_light
+
+interactions:
+  - type: click
+    root: template-entity-row
+    selector: .info
+    settle_ms: 500
+  - type: click
+    root: multiple-entity-row
+    selector: .entities-row div.entity:nth-of-type(1)
+    settle_ms: 500
+
+assertions:
+  - type: snapshot
+    name: "19_head_tap_action_fold_row"
+    threshold: 0.02
