@@ -1,4 +1,4 @@
-## [4.0.2-beta.1](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.1...v4.0.2-beta.1) (2026-09-12)
+## [4.0.2](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.1...v4.0.2) (2026-09-13)
 
 ### 🐞 Bug Fixes
 
