@@ -1,3 +1,10 @@
+### [4.0.3](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.2...v4.0.3) (2026-10-06)
+
+
+### ⚙️ Miscellaneous
+
+* Migrate release workflow from semantic-release to dedicated GitHub actions ([6bbef01](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/6bbef01206e5e20aeb5ef732f1e16a78a52c6d8a))
+
 ## [4.0.2](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.1...v4.0.2) (2026-09-13)
 
 ### 🐞 Bug Fixes
