@@ -1,3 +1,11 @@
+### [4.0.4](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.3...v4.0.4) (2026-11-05)
+
+
+### ⚙️ Miscellaneous
+
+* Update dependencies ([3fb6588](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/3fb6588dc569b95294b506933a46e0a7edb28cb5))
+* Update readme and test version to Home Assistant 2026.11.0 ([55ac8c5](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/commit/55ac8c5e5be965781daec3d2b49a09207019da0b))
+
 ### [4.0.3](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row/compare/v4.0.2...v4.0.3) (2026-10-06)
 
 
