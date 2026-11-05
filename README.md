@@ -6,9 +6,14 @@ Fold away and hide rows in lovelace [entities](https://www.home-assistant.io/lov
 
 ## Installing
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Lint-Free-Technology&repository=lovelace-fold-entity-row&category=plugin)
+<!-- ha-marketplace:exclude-start -->
+[![Open your Home Assistant instance and open a repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=Lint-Free-Technology&repository=lovelace-fold-entity-row&category=plugin)
 
-To install via HACS, add this repo [https://github.com/Lint-Free-Technology/lovelace-fold-entity-row](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row) as a [custom HACS repository](https://www.hacs.xyz/docs/faq/custom_repositories/) using type `Dashboard`. Use the button above to do this in one step. You are best to remove [thomasloven/lovelace-fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row) in your HACS to avoid confusion as to what repo you are using.
+Use [Home Assistant Marketplace](https://www.home-assistant.io/integrations/marketplace/) to add this fork as a [custom repository](https://www.home-assistant.io/integrations/marketplace/#custom-repositories) and install. This can be done in one step using the button above. You can also use the `Add from link` option in Marketplace - use [https://github.com/Lint-Free-Technology/lovelace-fold-entity-row](https://github.com/Lint-Free-Technology/lovelace-fold-entity-row).
+
+> [!IMPORTANT]
+> If you have the default fold-entity-row installed, [https://github.com/thomasloven/lovelace-fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row), you will need to uninstall from Marketplace to be able to install this fork as a custom repository. This will be enforced by Home Assistant Marketplace.
+<!-- ha-marketplace:exclude-end -->
 
 ## Quick Start
 
