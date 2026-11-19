@@ -100,6 +100,30 @@ entities:
 
 ![Group config example](docs/source/assets/images/04_group_config.png)
 
+### group_config with name option
+
+Home Assistant composed name options can be passed via group_config, allowing for adjusting display name when teh default would be to include the device. Here `Sun` is removed from the sun integration sensors.
+
+```yaml
+type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: group_config entity name
+      group_config:
+        name:
+          type: entity
+      entities:
+        - sensor.sun_next_dawn
+        - sensor.sun_next_noon
+        - sensor.sun_next_dusk
+        - sensor.sun_next_midnight
+```
+
+![Group config entity name example](docs/source/assets/images/11_group_config_name.png)
+
 ### padding
 
 - The left side padding can be adjusted by the `padding:` parameter (value in pixels).
