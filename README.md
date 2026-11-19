@@ -38,6 +38,8 @@ This will show the row specified in `head:` with an arrow next to it. When click
 
 ## Usage
 
+### head
+
 - `head:` and any row in `entities:` can be customized in exactly the same ways as ordinary [entities](https://www.home-assistant.io/lovelace/entities/) card rows.
 
 ```yaml
@@ -75,6 +77,8 @@ entities:
 
 ![Head config example 2](docs/source/assets/images/03_head_2.png)
 
+### group_config
+
 - Options specified in `group_config:` will be applied to all rows in the fold.
   - Note: `group_config` is not passed through to rows with `type: custom:uix-forge`.
 
@@ -96,6 +100,32 @@ entities:
 
 ![Group config example](docs/source/assets/images/04_group_config.png)
 
+### group_config with name option
+
+Home Assistant composed name options can be passed via group_config, allowing for adjusting display name when teh default would be to include the device. Here `Sun` is removed from the sun integration sensors.
+
+```yaml
+type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: group_config entity name
+      group_config:
+        name:
+          type: entity
+      entities:
+        - sensor.sun_next_dawn
+        - sensor.sun_next_noon
+        - sensor.sun_next_dusk
+        - sensor.sun_next_midnight
+```
+
+![Group config entity name example](docs/source/assets/images/11_group_config_name.png)
+
+### padding
+
 - The left side padding can be adjusted by the `padding:` parameter (value in pixels).
 
 ```yaml
@@ -116,6 +146,8 @@ entities:
 
 ![Padding config example](docs/source/assets/images/05_padding.png)
 
+### groups
+
 - Setting `head:` to a [group](https://www.home-assistant.io/integrations/group/) (including [light group](https://www.home-assistant.io/integrations/light.group/) or [cover group](https://www.home-assistant.io/integrations/cover.group/) ) will populate the entities list with the entities of that group.
 
 ```yaml
@@ -126,6 +158,8 @@ entities:
 ```
 
 ![Group entity example](docs/source/assets/images/06_group_entity.png)
+
+### open
 
 - Setting `open:` to true will make the fold open by default.
 
@@ -142,6 +176,8 @@ entities:
       - light.ceiling_lights
       - light.kitchen_lights
 ```
+
+### actions
 
 - If the header or any row in the group has the following tap-, hold- or double-tap-action defined, it will toggle the fold open or closed:
 

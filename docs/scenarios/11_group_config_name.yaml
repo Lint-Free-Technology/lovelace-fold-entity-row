@@ -1,0 +1,39 @@
+id: doc_group_config_name
+description: README group config example with entity name
+view_path: readme-group-config-name
+
+setup:
+  - type: ha_service
+    domain: light
+    service: turn_off
+    data:
+      entity_id: light.all_lights
+  - type: ha_service
+    domain: light
+    service: turn_on
+    data:
+      entity_id: light.all_lights
+      brightness: 255
+
+card:
+  type: entities
+  entities:
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: section
+        label: group_config entity name
+      group_config:
+        name:
+          type: entity
+      entities:
+        - sensor.sun_next_dawn
+        - sensor.sun_next_noon
+        - sensor.sun_next_dusk
+        - sensor.sun_next_midnight
+
+doc_image:
+  output: docs/source/assets/images/11_group_config_name.png
+  root: hui-entities-card
+  padding: 16
+  threshold: 0.02
